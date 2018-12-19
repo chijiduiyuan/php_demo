@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <title>拼图后台管理-后台管理</title>
+    <link rel="stylesheet" href="css/pintuer.css">
+    <link rel="stylesheet" href="css/admin.css">
+
+    <link type="image/x-icon" href="/favicon.ico" rel="shortcut icon" />
+    <link href="/favicon.ico" rel="bookmark icon" />
+    <script src="__JS__/jquery-1.8.3.min.js"></script>
+    <script>
+      $(function(){
+        $(".checkall").click(function(){
+         var rel=$(this).prop("checked");
+         $(".ck").prop('checked',rel);   
+        });
+		
+        $(".alldel").click(function(){
+			 var ss="";
+			 $(".ck:checked").each(function(i){
+				  ss+=$(this).val()+",";
+				 });
+			  //window.location.href="{:U('Index/delall')}"
+			}); 
+		
+		
+
+      });
+
+    </script>
+</head>
+
+<body>
+<div class="admin">
+	<form method="post">
+    <div class="panel admin-panel">
+    	<div class="panel-head"><strong>内容列表</strong></div>
+        <div class="padding border-bottom">
+            <input type="checkbox" class="button button-small checkall" name="checkall" checkfor="id" value="全选" />
+            <a href="{:U('Index/news_add')}" class="button button-small border-green">添加文章</a>
+            <input type="button" class="button alldel button-small border-yellow" value="批量删除" />
+            <input type="button" class="button button-small border-blue" value="回收站" />
+        </div>
+        <table width="1312" class="table table-hover">
+        	<tr><th width="64">选择</th><th width="266">分类</th><th width="453">名称</th><th width="234">时间</th><th width="271">操作</th></tr>
+            
+            
+<volist name="list" id="vo">
+<tr>
+   <td align="center"><input type="checkbox" name="id" class="ck" value="{$vo['newsid']}" /></td>
+   <td align="center">
+  <if condition="$vo['type'] eq 1">
+      行业新闻
+  <elseif condition="$vo['type'] eq 2" />国内新闻
+  <else />国际新闻
+  </if>
+
+   </td> 
+   <td align="center">{$vo.title}</td>
+   <td align="center">{$vo.sj}</td>
+   <td align="center"><a class="button border-blue button-little" href="{:U('Index/news_modi',array('newsid'=>$vo['newsid']))}">修改</a> <a class="button border-yellow button-little" href="{:U('Index/news_del',array('newsid'=>$vo['newsid']))}" onclick="{if(confirm('确认删除?')){return true;}return false;}">删除</a></td>
+</tr>
+
+ </volist>
+
+       
+ 
+        </table>
+      
+    </form>
+   
+</div>
+</body>
+</html>

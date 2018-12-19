@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="__PUBLIC__/admin/css/common.css">
+        <link rel="stylesheet" href="__PUBLIC__/admin/css/main.css">
+        <script type="text/javascript" src="__PUBLIC__/admin/js/jquery.min.js"></script>
+        <script type="text/javascript" src="__PUBLIC__/admin/js/colResizable-1.3.min.js"></script><style type="text/css">.CRZ{table-layout:fixed;}.CRZ td,.CRZ th{padding-left:0px!important;padding-right:0px!important;overflow:hidden}.CRC{height:0px;position:relative;}.CRG{margin-left:-5px;position:absolute;z-index:5;}.CRG .CRZ{position:absolute;background:none;filter:alpha(opacity=1);opacity:0;width:10px;height:100%;top:0px}.CRL{position:absolute;width:1px}.CRD{ border-left:1px dotted black}</style>
+        <script type="text/javascript" src="__PUBLIC__/admin/js/common.js"></script>
+
+        <script type="text/javascript">
+            $(function () {
+                $(".list_table").colResizable({
+                    liveDrag: true,
+                    gripInnerHtml: "<div class='grip'></div>",
+                    draggingClass: "dragging",
+                    minWidth: 30
+                });
+
+            });
+        </script>
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="container">
+            <div id="button" class="mt10">
+                <input type="button" name="button" class="btn btn82 btn_add" value="新增" onclick="location.href = '{:U('Weixin/addMenu')}'"> 
+                <a href="{:U('Weixin/createMenu')}">生成自定义菜单</a>  |     <a href="{:U('Weixin/delWxMenu')}">删除自定义菜单</a>
+            </div>
+
+            <div id="table" class="mt10">
+                <div class="box span10 oh">
+                    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="list_table CRZ" id="CRZ0">
+                        <tbody><tr>
+
+                                <th >ID</th>
+                                <th >PID</th>
+                                <th >名称</th>
+                                <th >类型</th>
+                                <th >key</th>
+                                <th>URL</th>
+                                <th>操作</th>
+                            </tr>
+                        <volist name="list" id="v">
+                            <tr class="tr"  style='text-align:center'>
+                                <td>{$v.id}</td>
+                                <td>{$v.pid}</td>
+                                <td>{$v.name}</td>
+                                <td>{$v.type}</td>
+                                <td>{$v.key}</td>
+                                <td>{$v.url}</td>
+                                <td><a href='{:U("Weixin/editMenu",array("id"=>$v["id"]))}'>修改</a> <a href="{:U('Weixin/delMenu',array('id'=>$v['id']))}">删除</a></td>
+                            </tr>
+                            <!--嵌套循环子菜单-->
+                            <volist name="v.sub" id="v1">
+                                <tr class="tr" style='text-align:center'>
+                                    <td>{$v1.id}</td>
+                                    <td>{$v1.pid}</td>
+                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|--{$v1.name}</td>
+                                    <td>{$v1.type}</td>
+                                    <td>{$v1.key}</td>
+                                    <td>{$v1.url}</td>
+                                    <td><a href='{:U("Weixin/editMenu",array("id"=>$v1["id"]))}'>修改</a> <a href="{:U('Weixin/delMenu',array('id'=>$v1['id']))}">删除</a></td>
+                                </tr>
+                            </volist>
+                            <!--嵌套循环子菜单 结束-->
+                        </volist>
+
+                        </tbody></table>
+
+                </div>
+            </div>
+
+
+
+
+        </div> 
+
+
+    </body></html>

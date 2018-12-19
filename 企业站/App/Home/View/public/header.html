@@ -1,0 +1,57 @@
+<a  style=" position:fixed; right:10px; top:50px; z-index:100" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2416411477&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:2416411477:53" alt="点击这里给我发消息" title="点击这里给我发消息"/></a>
+
+<!--头部-->
+<div class="t_bg">
+	<div class="top">
+  <notempty name="Think.session.register">
+  欢迎<a href="{:U('Login/person')}">{$Think.session.register}</a>
+  <a href="{:U('Login/loginout')}">退出</a>
+  </notempty>
+    	<a href="">联系我们</a><i>|</i>
+        <a href="">设为首页</a><i>|</i>
+        <a href="">加入收藏</a><i>|</i>
+    <empty name="Think.session.register">    
+        <a href="{:U('Login/index')}">登录</a><i>|</i>
+        <a href="reg.html">注册</a>
+   </empty>      
+        
+    </div>
+</div>
+<div class="head clearfix">
+    <div class="logo"><a href="index.html"><img src="__PUBLIC__/Assets/images/logo.png" alt="诺博源"/></a></div>
+    <div class="search">
+        <input name="" type="text" placeholder="请输入关键字">
+        <input name="" type="submit" value="搜 索">
+    </div>
+    <div class="tel">
+    	<span><em>热线电话:</em>&nbsp;</span>
+        <b>400-150-1169</b>
+    </div>
+</div>
+<div class="n_bg">
+	<div class="nav_m">
+        <div class="n_icon">导航栏</div>
+        <ul class="nav clearfix">
+            <li class="now"><a href="{:U('Index/index')}"><i>&nbsp;</i>首页</a></li>
+            <li><a href="{:U('Cp/product')}"><i>&nbsp;</i>产品中心</a></li>
+            <li>
+            	<a href="{:U('News/news')}"><i>&nbsp;</i>新闻中心</a>
+                <div class="er clearfix">
+               <volist name="news_type" id="vv">  
+                <a href="{:U('News/news',array('typeid'=>$vv['typeid']))}">{$vv.name}</a>
+               </volist>   
+                </div>
+            </li>
+            <li>
+            	<a href="{:U('Index/about')}"><i>&nbsp;</i>关于我们</a></li>
+            <li>
+            	<a href="{:U('Index/contact')}"><i>&nbsp;</i>联系我们</a>
+                <div class="er clearfix">
+                	<a href="{:U('Index/contact')}">联系诺博源</a>
+                    <a href="message.html">客户留言</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--头部-->

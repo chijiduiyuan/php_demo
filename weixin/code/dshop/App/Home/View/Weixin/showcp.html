@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <title>详细页</title>
+
+        <link href="__PUBLIC__/Weixin/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="__PUBLIC__/Weixin/css/style.css" rel="stylesheet">
+
+        <script src="__PUBLIC__/Weixin/css/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function ($) {
+
+                $('.theme-login').click(function () {
+                    $('.theme-popover-mask').show();
+                    $('.theme-popover-mask').height($(document).height());
+                    $('.theme-popover').slideDown(200);
+                })
+                $('.theme-poptit .close1').click(function () {
+                    $('.theme-popover-mask').hide();
+                    $('.theme-popover').slideUp(200);
+                })
+
+            });
+        </script>
+
+        <script src="__PUBLIC__/Weixin/css/framework.launcher.js"></script><!--加载-->
+
+    </head>
+    <body >
+
+        <!--加载-->
+        <div id="preloader">
+            <div id="status">
+                <p class="center-text">
+                    Loading the content...
+                    <em>Loading depends on your connection speed!</em>
+                </p>
+            </div>
+        </div><!--end-->
+        <header class="header"></header>
+        <!--顶部-->
+
+        <div class="new-header ">
+            <a href="javascript:history.go(-1);" class="new-a-back"><span>返回</span></a>
+            <h2>产品详细</h2>
+        </div>
+        <!--end-->
+
+        <!--商品详情-->
+        <div class="clear"></div>
+        <article>
+            <div class="shangpin-xq">
+                <div class="sp"><img src="/Uploads/{$info.cppic}" width="100%"></div>
+                <div class="tab">
+                    <h3>{$info.cptitle}</h3>
+                    <span class="em1">￥{$info.price}</span>
+                    <a class="theme-login" href="#"><img src="__PUBLIC__/Weixin/image/y.png" width="100%"></a>
+                </div>
+            </div>
+            <div class="shanpin-xq1">
+                <h3>商品详情</h3>
+                <div class="wenzi">
+                    <div id="content">
+                        {:htmlspecialchars_decode($info['content'])}
+                    </div>
+
+                </div>  
+            </div>
+        </article>  
+        <!--end-->
+
+        <script language="javascript">
+            $(window).load(function () {
+                $("#content img").each(function () {
+                    $(this).css("width", "100%");
+                    $(this).css("height", "100%");
+                });
+            });
+        </script>
+        <!--底部-->
+        <div class="divcon"></div>
+        <footer class="footer1">
+            <nav class="mainav">
+                <ul class="pc_overflow">
+                    <li class="li11"><a href="javascript:WeixinJSBridge.invoke('closeWindow',{},function(res){});"><p>首页</p></a></li>
+                    <li class="li21"><a href="{:U('Weixin/cplist/')}"><p>产品展示</p></a></li>
+                    <li class="li31"><a href="http://wpa.qq.com/msgrd?v=3&amp;uin=88148253&amp;site=qq&amp;menu=yes"><p>在线沟通</p></a></li>
+                    <li class="li41"><a href="tel:13123456789"><p>一键拨号</p></a></li>
+
+                </ul>
+            </nav>
+        </footer>
+        <!--end-->
+
+
+        <!--提交订单内容弹出框-->
+        <div class="theme-popover-mask"></div>
+        <div class="theme-popover">
+            <div class="theme-popbod dform">
+                <h3>填写收货人信息</h3>
+                <form class="form-horizontal" name="loginform" method="post" action="{:U('Weixin/order')}" onsubmit="return chk(this)">
+                    <ul class="que">
+                        <li><label>姓名</label><input type="text" name="name" class="que1" ></li>
+                        <li><label>电话</label><input type="text" class="que1 " name="tel" ></li>
+                        <li><label>地址</label><input type="text" class="que1" name="addr"></li>
+                    </ul>   
+                    <input type="submit" class="subm" value="立即购买">
+
+                    <input name="id" type="hidden" value="{$info.cpid}">
+                </form>
+            </div>
+            <div class="theme-poptit">
+                <a href="javascript:;" title="关闭" class="close1"><img src="__PUBLIC__/Weixin/image/gb.png"></a>
+            </div>
+        </div>
+        <!--end-->
+        <script>
+
+            function chk(obj) {
+                var name = obj.name.value;
+                var tel = obj.tel.value;
+
+                var addr = obj.addr.value;
+
+                var reg = /^0?1[3|4|5|7|8][0-9]\d{8}$/;
+                if (!name) {
+                    alert('姓名不能为空');
+                    obj.name.focus();
+                    return false;
+                }
+
+
+                if (!tel) {
+                    alert('电话不能为空');
+                    obj.tel.focus();
+                    return false;
+                } else if (!reg.test(tel)) {
+                    alert('请填写正确的手机号码');
+                    obj.tel.focus();
+                    return false;
+                }
+                if (!addr) {
+                    alert('地址不能为空');
+                    obj.addr.focus();
+                    return false;
+                }
+            }
+
+        </script>
+    </body>
+</html>

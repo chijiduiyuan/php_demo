@@ -1,0 +1,21 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*   右边固定定位   */
+
+.r-fixed{ width:34px; background:#000; height:100%; position:fixed; top:0px; right:0px; z-index:100;}
+.r-fixed .r-menu{ width:34px; float:left; padding:10px 0px;  margin-top:50px; }
+.r-fixed .r-menu span{ width:34px; height: 20px; float:left; background: url(../pic/sidePanel.png) no-repeat -60px -10px; display: block;}
+.r-fixed .r-menu a{ color:#FFF; font-size:14px; width:10px; text-align:center;margin-left:12px; display:block; float:left;}
+.r-fixed .r-menu i{ color:#FFF; width:20px; height:20px; float:left; display:block; border-radius:50%; background:#C7000B; font-style:normal; text-align:center; line-height:20px; margin-left:7px; margin-top:6px;}
+
+.r-fixed .r-menu:hover{ background:#C7000B;}
+.r-fixed .r-menu1{ width:34px; height:42px; float:left; position:relative;}
+.r-fixed .menu-1{ background:url(../pic/side_golds_new.png) no-repeat 7px -189px;}
+.r-fixed .menu-2{ background:url(../pic/quan_iconnew.png) no-repeat 7px 11px;}
+.r-fixed .menu-3{ background:url(../pic/myFavorites_new.png) no-repeat 7px 11px;}
+.r-fixed .menu-4{ background:url(../pic/side_golds_new.png) no-repeat 3px -227px;}
+.r-fixed .r-menu1:hover{ background-color:#C7000B;}
+.r-fixed .r-menu1 p{ position:absolute; right:34px; top:0px; width:80px; text-align:center; color:#FFF; line-height:42px; height:42px; background:#C7000B; z-index:100; display:none;}
+.r-fixed .r-menu1:hover p{ display:block;}
+

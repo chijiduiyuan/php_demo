@@ -1,0 +1,23 @@
+1.复件 index.php 网站提交支付宝，的发送页面。这里是一个表单post提交，提交商品/订单信息和价格等,提交到alipayapi.php。
+
+2.返回处理页面有2个
+一个是post返回(异步)，notify_url.php，重要！！以他返回的内容，判断是否支付成功
+
+一个是get返回(同步)，return_url.php，为了当时就能返回，用户体验好
+
+
+
+3.alipay.config.php 配置文件，重要，但都是申请好后，写死在里面的
+
+$alipay_config['partner']= '填写合作伙伴身份（PID）';
+$alipay_config['key']= '填写MD5密钥';
+
+通知URL地址,同步/异步
+
+
+在这个地址中,找到判断支付成功位置,更新订单状态
+
+
+
+
+

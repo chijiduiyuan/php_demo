@@ -1,0 +1,88 @@
+结合wamp sever 环境 (本地),注意备份修改的文件
+
+1.域名解析 (这个域名只能在本机能打开)
+  1)位置:C:\Windows\System32\drivers\etc\hosts
+  2)关闭杀毒软件
+  3)hosts使用记事本打开,增加一行  
+   127.0.0.1       www.myitem.com
+  4)保存
+  
+  PS: 
+   win10系统,有时会无法修改[不是管理员,没有权限],
+   1)可以尝试把此文件复制到 桌面 修改好后,覆盖原文件
+   2)查看:http://jingyan.baidu.com/article/624e7459b194f134e8ba5a8e.html
+
+2.ping 域名
+  1)按 win+r(开始->运行),命令行,输入cmd回车
+  2)ping www.myitem.com
+  3)结果中有  127.0.0.1 修改成功了;
+     
+3.绑定站点
+  1)打开apache配置文件(注意路径要对应自己的电脑上wamp安装路径)
+    位置:C:\wamp\bin\apache\apache2.4.9\conf\httpd.conf
+  2)httpd.conf中 
+    查找 httpd-vhosts.conf 
+     #Include conf/extra/httpd-vhosts.conf
+    去除前面的 #
+
+    保存
+
+  3)httpd.conf中 
+    查找所有 Deny from all(如果查找不到,跳过此步骤)
+    都修改成 Allow from all
+    保存
+
+  4)修改扩展配置文件(注意路径要对应自己的电脑上wamp安装路径)
+    位置:C:\wamp\bin\apache\apache2.4.9\conf\extra\httpd-vhosts.conf
+
+    
+    把项目文件夹单独放置在 C:/wamp/www/ 下(注意自己的wamp安装路径)    
+    打开,删除原有的配置,修改成以下
+
+
+   #域名绑定站点目录(注意项目保存路径)
+   <VirtualHost *:80>
+     #站点路径
+     DocumentRoot "C:/wamp/www/myitem"
+     #站点域名
+     ServerName www.myitem.com
+     <Directory "C:/wamp/www/myitem">
+        #显示目录结构列表,不显示去除 Indexes
+        Options Indexes FollowSymLinks
+        #开启URL重写(调用.htacess)
+        AllowOverride all
+        #访问控制,允许所有人访问
+        Require all granted
+     </Directory>
+   </VirtualHost>
+ 
+
+  #以下保留之前访问方式
+
+   <VirtualHost *:80>
+    DocumentRoot "C:/wamp/www"
+    ServerName localhost
+     <Directory "C:/wamp/www">
+        Options Indexes FollowSymLinks
+        AllowOverride all
+        Require all granted
+    </Directory>
+   </VirtualHost>
+
+  <VirtualHost *:80>
+    DocumentRoot "C:/wamp/www"
+    ServerName 127.0.0.1
+     <Directory "C:/wamp/www">
+        Options Indexes FollowSymLinks
+        AllowOverride all
+        Require all granted
+    </Directory>
+  </VirtualHost>
+   
+    保存
+
+  5)重启 wamp 
+
+4.浏览器 输入 www.myitem.com 访问网站
+ 
+

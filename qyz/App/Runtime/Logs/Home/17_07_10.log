@@ -1,0 +1,139 @@
+[ 2017-07-10T16:46:20+08:00 ] ::1 /php/thnkphp/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000058s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001820s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001770s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002048s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000541s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000820s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.072529s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.072810s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000918s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001069s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001350s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001510s ]
+
+[ 2017-07-10T16:46:23+08:00 ] ::1 /php/thnkphp/index.php/Home/News/news.java
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000057s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000854s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001619s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001888s ]
+SQL: SHOW COLUMNS FROM `news` [ RunTime:0.0037s ]
+SQL: SELECT `newsid`,`title`,`sj` FROM `news`  [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000299s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000560s ]
+NOTIC: [8] Undefined variable: name D:\wamp\www\php\thnkphp\App\Runtime\Cache\Home\b28bb868d247593bf24cc22e5a0be1b3.php 第 15 行.
+NOTIC: [8] Undefined variable: sex D:\wamp\www\php\thnkphp\App\Runtime\Cache\Home\b28bb868d247593bf24cc22e5a0be1b3.php 第 15 行.
+NOTIC: [8] Undefined variable: age D:\wamp\www\php\thnkphp\App\Runtime\Cache\Home\b28bb868d247593bf24cc22e5a0be1b3.php 第 15 行.
+NOTIC: [8] Undefined variable: name D:\wamp\www\php\thnkphp\App\Runtime\Cache\Home\b28bb868d247593bf24cc22e5a0be1b3.php 第 16 行.
+NOTIC: [8] Undefined variable: sex D:\wamp\www\php\thnkphp\App\Runtime\Cache\Home\b28bb868d247593bf24cc22e5a0be1b3.php 第 16 行.
+NOTIC: [8] Undefined variable: age D:\wamp\www\php\thnkphp\App\Runtime\Cache\Home\b28bb868d247593bf24cc22e5a0be1b3.php 第 16 行.
+NOTIC: [8] Undefined variable: person D:\wamp\www\php\thnkphp\App\Runtime\Cache\Home\b28bb868d247593bf24cc22e5a0be1b3.php 第 18 行.
+NOTIC: [8] Undefined variable: person D:\wamp\www\php\thnkphp\App\Runtime\Cache\Home\b28bb868d247593bf24cc22e5a0be1b3.php 第 18 行.
+NOTIC: [8] Undefined variable: person D:\wamp\www\php\thnkphp\App\Runtime\Cache\Home\b28bb868d247593bf24cc22e5a0be1b3.php 第 18 行.
+NOTIC: [8] Undefined variable: person D:\wamp\www\php\thnkphp\App\Runtime\Cache\Home\b28bb868d247593bf24cc22e5a0be1b3.php 第 19 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\wamp\www\php\thnkphp\App\Runtime\Cache\Home\b28bb868d247593bf24cc22e5a0be1b3.php 第 19 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.038233s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.038543s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000488s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000589s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000619s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000726s ]
+
+[ 2017-07-10T16:46:31+08:00 ] ::1 /php/thnkphp/index.php/Home/News/news.java
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000035s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000530s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000809s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000963s ]
+SQL: SHOW COLUMNS FROM `news` [ RunTime:0.0015s ]
+SQL: SELECT `newsid`,`title`,`sj` FROM `news`  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000133s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000251s ]
+NOTIC: [8] Undefined variable: name D:\wamp\www\php\thnkphp\App\Runtime\Cache\Home\b28bb868d247593bf24cc22e5a0be1b3.php 第 15 行.
+NOTIC: [8] Undefined variable: sex D:\wamp\www\php\thnkphp\App\Runtime\Cache\Home\b28bb868d247593bf24cc22e5a0be1b3.php 第 15 行.
+NOTIC: [8] Undefined variable: age D:\wamp\www\php\thnkphp\App\Runtime\Cache\Home\b28bb868d247593bf24cc22e5a0be1b3.php 第 15 行.
+NOTIC: [8] Undefined variable: name D:\wamp\www\php\thnkphp\App\Runtime\Cache\Home\b28bb868d247593bf24cc22e5a0be1b3.php 第 16 行.
+NOTIC: [8] Undefined variable: sex D:\wamp\www\php\thnkphp\App\Runtime\Cache\Home\b28bb868d247593bf24cc22e5a0be1b3.php 第 16 行.
+NOTIC: [8] Undefined variable: age D:\wamp\www\php\thnkphp\App\Runtime\Cache\Home\b28bb868d247593bf24cc22e5a0be1b3.php 第 16 行.
+NOTIC: [8] Undefined variable: person D:\wamp\www\php\thnkphp\App\Runtime\Cache\Home\b28bb868d247593bf24cc22e5a0be1b3.php 第 18 行.
+NOTIC: [8] Undefined variable: person D:\wamp\www\php\thnkphp\App\Runtime\Cache\Home\b28bb868d247593bf24cc22e5a0be1b3.php 第 18 行.
+NOTIC: [8] Undefined variable: person D:\wamp\www\php\thnkphp\App\Runtime\Cache\Home\b28bb868d247593bf24cc22e5a0be1b3.php 第 18 行.
+NOTIC: [8] Undefined variable: person D:\wamp\www\php\thnkphp\App\Runtime\Cache\Home\b28bb868d247593bf24cc22e5a0be1b3.php 第 19 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\wamp\www\php\thnkphp\App\Runtime\Cache\Home\b28bb868d247593bf24cc22e5a0be1b3.php 第 19 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016795s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016906s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000377s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000470s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000587s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000687s ]
+
+[ 2017-07-10T16:46:33+08:00 ] ::1 /php/thnkphp/index.php/Home/News/news.java
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000056s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000871s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000753s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000955s ]
+SQL: SHOW COLUMNS FROM `news` [ RunTime:0.0023s ]
+SQL: SELECT `newsid`,`title`,`sj` FROM `news`  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000168s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000311s ]
+NOTIC: [8] Undefined variable: name D:\wamp\www\php\thnkphp\App\Runtime\Cache\Home\b28bb868d247593bf24cc22e5a0be1b3.php 第 15 行.
+NOTIC: [8] Undefined variable: sex D:\wamp\www\php\thnkphp\App\Runtime\Cache\Home\b28bb868d247593bf24cc22e5a0be1b3.php 第 15 行.
+NOTIC: [8] Undefined variable: age D:\wamp\www\php\thnkphp\App\Runtime\Cache\Home\b28bb868d247593bf24cc22e5a0be1b3.php 第 15 行.
+NOTIC: [8] Undefined variable: name D:\wamp\www\php\thnkphp\App\Runtime\Cache\Home\b28bb868d247593bf24cc22e5a0be1b3.php 第 16 行.
+NOTIC: [8] Undefined variable: sex D:\wamp\www\php\thnkphp\App\Runtime\Cache\Home\b28bb868d247593bf24cc22e5a0be1b3.php 第 16 行.
+NOTIC: [8] Undefined variable: age D:\wamp\www\php\thnkphp\App\Runtime\Cache\Home\b28bb868d247593bf24cc22e5a0be1b3.php 第 16 行.
+NOTIC: [8] Undefined variable: person D:\wamp\www\php\thnkphp\App\Runtime\Cache\Home\b28bb868d247593bf24cc22e5a0be1b3.php 第 18 行.
+NOTIC: [8] Undefined variable: person D:\wamp\www\php\thnkphp\App\Runtime\Cache\Home\b28bb868d247593bf24cc22e5a0be1b3.php 第 18 行.
+NOTIC: [8] Undefined variable: person D:\wamp\www\php\thnkphp\App\Runtime\Cache\Home\b28bb868d247593bf24cc22e5a0be1b3.php 第 18 行.
+NOTIC: [8] Undefined variable: person D:\wamp\www\php\thnkphp\App\Runtime\Cache\Home\b28bb868d247593bf24cc22e5a0be1b3.php 第 19 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\wamp\www\php\thnkphp\App\Runtime\Cache\Home\b28bb868d247593bf24cc22e5a0be1b3.php 第 19 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.020547s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.020696s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000536s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000660s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000767s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000907s ]
+
+[ 2017-07-10T17:33:53+08:00 ] ::1 /php/thnkphp/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000438s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000633s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000752s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000331s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000453s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.032510s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.032643s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000453s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000558s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000552s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000653s ]
+

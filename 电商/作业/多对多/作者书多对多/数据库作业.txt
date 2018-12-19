@@ -1,0 +1,66 @@
+1.写一个用户注册的表单验证。验证以下内容
+1) 验证用户名是否注册了。要使用ajax，提交服务端进行数据库验证。要写查询语句
+2) 要建立用户表。要将用户表结构导出，作为本题答案的一部分
+
+2.
+1) 建立一对多的关系表。要有业务意义(如：新闻类别和新闻)。将表结构导出，作为本题答案的一部分
+2) 用内连接语句，和左连接语句，对上述两张表做出查询。写出sql语句
+3) 说出：在什么情况下，上述查询的结果集，会不一样？
+
+3.
+1) 1本书，关联多个作者。1个作者，关联多本书。建立多对多关系表。将表结构导出，作为本题答案的一部分。要建立合适的索引
+2) 写sql语句，求出：写书最多的那个作者，写了哪些书。
+3) 写sql语句，求出：作者最多的那本书，它的那些作者，各写了多少本书。
+
+3 2)
+select book.bname from bookauthor,book,author where bookauthor.bid=book.bid and bookauthor.autid=author.autid and bookauthor.autid=(select autid from author where autid=(select autid from bookauthor group by autid order by count(autid) desc limit 1))
+
+
+3 3)
+select author.autname, count(bookauthor.autid) as sum from bookauthor,author where bookauthor.autid in(select autid from bookauthor where bid=(select bid from book where bid=(select bid from bookauthor group by bid order by count(bid) desc limit 1))) and bookauthor.autid=author.autid group by bookauthor.autid
+
+//
+   bookauthor
+   bid     autid
+ /第一步找到对应作者autid
+
+select autid from bookauthor group by autid order by count(autid) desc limit 1
+
+
+第二步还要去 bookauthor查询  where autid
+select bid from bookauthor where autid=(select autid from bookauthor group by autid order by count(autid) desc limit 1)
+
+
+
+第三步再去查询book表
+
+select * from book where bid in (select bid from bookauthor where autid=(select autid from bookauthor group by autid order by count(autid) desc limit 1))
+
+
+
+
+  第二题目
+
+  第一步找书
+select bid from bookauthor group by bid order by count(bid) desc limit 1
+ 
+
+
+  第二步找那些作者
+
+select autid from bookauthor where bid=(select bid from bookauthor group by bid order by count(bid) desc limit 1)
+
+
+
+
+
+
+select author.autname, count(bookauthor.autid) as num from author,bookauthor where bookauthor .autid in (select autid from bookauthor where bid=(select bid from bookauthor group by bid order by count(bid) desc limit 1)) and author.autid=bookauthor.autid group by bookauthor.autid order by count(bookauthor.autid) desc
+
+
+
+
+
+
+
+

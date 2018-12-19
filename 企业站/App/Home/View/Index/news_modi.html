@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>新闻添加</title>
+</head>
+
+<body>
+      <form method="post" action="{:U('Index/news_modi_check')}">
+            新闻标题:<input type="text" name="title"  value="{$list['title']}"/><br/><br/>
+            新闻内容:<textarea name="content" cols="50" rows="20">{$list['content']}</textarea><br/><br/>
+         <input type="hidden" name="newsid" value="{$list['newsid']}" />
+  新闻分类:<select name="type">
+              <option value="1" <if condition="$list['type'] eq 1">selected</if> >行业新闻</option>
+              <option value="2" <if condition="$list['type'] eq 2">selected</if>>国内新闻</option>
+              <option value="3" <if condition="$list['type'] eq 3">selected</if>>国际新闻</option> 
+         </select><br/><br/>
+         <input type="submit"  value="修改" />
+      
+      </form>
+
+
+</body>
+</html>

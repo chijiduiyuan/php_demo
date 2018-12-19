@@ -1,0 +1,32 @@
+
+/*top*/
+.topbar{width:100%;height:40px;position:fixed;top:0px;z-index:99999;background:#00a040}
+.logo-top{width:14%;height:40px;float:left;position:relative;left:50%;top:50%;margin-left:15px;margin-top:-17px;}
+.logo-top-other{width:20%;height:40px;line-height:40px;float:right;position:relative;left:10px;top:0px;color:#fff;text-align:center;font-size:16px;}
+.logo-top-other a{color:#fff}
+.logo-top-other a:hover{color:#fff}
+.top-soso{width:60%;height:28px;border:0px;float:left; position:absolute;margin-left:70px;top:50%; margin-top:-14px;background:#008736 url(../image/icon_soso.png) left 10px center no-repeat;text-align:center; font-size:14px;color:#72bb8f;line-height:35px;border-radius:10px;}
+
+.iconso{padding-top:5px;float:left;position:relative;width:100%;border:0px;background:none;color:#fff; text-align:left;padding-left:35px;font-size:14px;line-height:18px;}
+
+
+.navbar-toggle{position:relative;top:0px;float:left;padding:6px 10px;margin-top: 4px;margin-right: 10px;margin-bottom: 8px;background:none;-moz-border-radius:5px;-webkit-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px; cursor:pointer;}
+.navbar-toggle .icon-bar{display: block;width: 22px;height:2px;-moz-border-radius:1px;-webkit-border-radius:1px;-ms-border-radius:1px;-o-border-radius:1px;border-radius:1px;margin-top: 4px;border-top:1px solid #FFF}
+.menubar{width: 100%;position:fixed;top:40px;z-index:99999; }
+.menulist{width:100%;float:left;line-height:40px;font-size:16px;text-align:left;}
+.menulist li{width:100%;float:left;color:#666;padding:0 20px;display:block;border-bottom:1px solid #e8e8e8;background:#fff url(image/san2.png) right center no-repeat; background-size:10px 10px}
+.menulist li a{display:block;line-height:40px;color:#666;font-size:16px;text-decoration:none}
+.menulist li a:hover,.menulist li a.actives{display:block;color:#666;}
+.menulist .smclass{width:70px;float:left;color:#666;display:block; }
+.menulist .smclass.actives{/*background:url(wapimages/icon-up-red.png) right center no-repeat;*/color:#666;}
+.menulist .smlist{width:100%;float:left;color:#666; padding-left:20px; display:block; }
+.menulist .smlist .mm{width:100%;float:left;color:#666; display:block}
+/*common style*/
+.module{position:relative;overflow:hidden; color:#fff; font-size:2rem; height:220px; width:100%; z-index:999}
+.bgred{background:#a0021b;}
+.bgblack{background:#00a040;}
+.pager{font-size:12px;padding-left:0;margin:20px 0;text-align:center;list-style:none}.pager a{display:inline}.pager a,.pager span{display:inline-block;padding:5px 14px;background-color:#fff;border:1px solid #ddd;border-radius:15px}.pager a:focus,.pager span{text-decoration:none;background-color:#eee}.pager .next>a,.pager .next>span{float:right}.pager .previous>a,.pager .previous>span{float:left}.pager .disabled>a,.pager .disabled>a:focus,.pager .disabled>a:hover,.pager .disabled>span{color:#777;cursor:not-allowed;background-color:#fff}
+
+
+
+

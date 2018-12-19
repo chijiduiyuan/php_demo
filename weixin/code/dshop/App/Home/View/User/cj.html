@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>注册</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/style.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/shopping-mall-index.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/cj/cj.css" />
+<script type="text/javascript" src="__PUBLIC__/Home/js/jquery.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/zhonglin.js"></script>
+</head>
+
+<body>
+
+	<!--top 开始-->
+    <include file="Include:top" />
+   <!-- 代码部分begin  -->
+<div class="rotary">
+	<div class="rotaryArrow" id="rotaryArrow"></div>
+	<div class="list">
+		<h3>中奖名单</h3>
+		<ul>
+		
+			<li>1569****851</li>
+			<li>1515****206</li>
+			<li>1550****789</li>
+			<li>1370****627</li>
+			<li>1828****215</li>
+			<li>1589****572</li>
+			<li>1583****825</li>
+			<li>1396****805</li>
+			<li>1332****261</li>
+			<li>1884****863</li>
+			<li>1384****955</li>
+			<li>1897****137</li>
+			<li>1342****973</li>
+			<li>1558****071</li>
+			<li>1554****168</li>
+			<li>1562****018</li>
+			<li>1805****856</li>
+			<li>1354****809</li>
+			<li>1383****364</li>
+		</ul>
+	</div>
+	<div class="result" id="result">
+		<p id="resultTxt"></p>
+		<a href="javascript:" id="resultBtn" title="关闭">关闭</a>
+	</div>
+</div>
+    
+    <!--底部服务-->
+    
+    <include file="Include:footer" />
+   <script>
+     //var arr=new Array('谢谢参与','代金卷5元','代金卷1元','代金卷10元','谢谢参与','代金卷20元','代金卷50元','代金卷30元');
+	  //第一等份有多少度
+	  var avg_deg=45;  
+	  var m=0;
+      $(function(){
+	          //点击事件
+		      $("#rotaryArrow").click(function(){				  
+				       $.ajax({
+						          url:"{:U('User/cj_ajax')}",
+								  type:"POST",
+								  async:true,
+								  dataType:"json",
+								  success: function(data){  
+								if(data.jf>=50){
+								      if(data.count<=2){
+										  m++;
+							  //var n=parseInt(Math.random()*arr.length);	  
+					          var deg=360*m*5+avg_deg*data.n+"deg";
+					          $("#rotaryArrow").css('transform','rotate('+deg+')');
+					          setTimeout(function(){alert(data.name);},1600);
+				              }
+							  else{alert('今天已经抽奖二次了,请明天再来');}  
+								}
+								else{alert("对不起你的积分不够");}
+									  },
+								  
+			  
+						         });
+				  
+				  
+				  
+				  
+				  
+				 /* m++;  
+				  if(m<=2){
+	                  var n=parseInt(Math.random()*arr.length);	  
+					  var deg=360*m*5+avg_deg*n+"deg";
+					  $("#rotaryArrow").css('transform','rotate('+deg+')');
+					  setTimeout(function(){alert(arr[n]);},1600);
+				      }else{alert('今天已经抽奖二次了,请明天再来');}  
+					  */
+					  
+					  
+					  
+					  
+				     });  
+
+		
+		
+		       });
+		 
+
+    
+			
+		
+
+</script>
+   
+    
+   
+   
+</body>
+</html>

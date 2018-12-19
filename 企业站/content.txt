@@ -1,0 +1,178 @@
+验证码
+后台的检测（登录检测)
+用户名通过ajax检测
+
+
+创建验证码的时候不能有任何的输出,也不能有html代码,页面的编码要用统一的utf-8
+
+ $mm=imagecreate(160,50); //创建一个画布大小
+
+ imagecolorallocate($mm,0,0,0);//给画面填充一个颜色
+
+创建杂点(像素点)
+ imagesetpixel($mm,mt_rand(0,160),mt_rand(0,50),$color);
+
+
+imageline($mm,0,0,160,50,$white); 
+
+
+imagerectangle($mm,100,30,108,38,$white);  矩形
+
+支持原生态写法数据查询
+$list=$MM->query("SELECT  message.content,message.shijian,register.username from message,register where message.uid=register.id order by message.id desc");
+
+一对一表查询
+SELECT  message.content,message.shijian,register.username from message,register where message.uid=register.id order by message.id desc
+
+
+SELECT  a.content as con,a.shijian as sj,b.username as name from message a,register b where a.uid=b.id order by a.id desc
+
+
+tp关联查询的
+
+SELECT message.content,message.shijian,register.username FROM `message` INNER JOIN register on message.uid=register.id ORDER BY message.id desc
+
+
+
+ join()
+      $mm=M('message');
+      $list=$mm->field('message.content,message.shijian,a.username')->join('register as a on message.uid=a.id')->order('message.id desc')->select();
+
+     echo $mm->getLastSql(); //获取原生态语句
+
+
+   $mm=M("message");
+   $list=$mm->table('message a,register b')->where('a.uid=b.id')->order('a.id desc')->select();
+   echo $mm->getLastSql(); //获取原生态语句
+
+ueditor  百度的编辑器 php版本
+http://ueditor.baidu.com/website/download.html
+文件上传
+
+<form action="__URL__/upload" enctype="multipart/form-data" method="post" >
+
+enctype="multipart/form-data"  必须加这一句才能上传
+
+
+分页
+
+  1.要获取所有的数据条数 rows
+  2.每一页放多少条  page_num
+  3.  rows/page_num
+
+   select * from news limit 0,5    limit m,n m表示从下标开始取，n表示取多少条记录
+
+
+自动验证
+
+protected $_validate = array(
+    
+
+     );
+ array('username','require','用户名必须！'), //默认情况下用正则进行验证(不能为空的情况)
+
+  array('username','','用户名称已经存在！',0,'unique',1), // 在表里面不能重复用户名
+
+  array('pwd1','pwd','两次密码不一致',0,'confirm'), // 验证确认密码是否和密码一致
+
+
+
+1.多表关联
+
+ 新建一个新闻分类表
+
+ typeid   name  sno 
+
+ newsid             type
+
+
+
+
+
+
+ 用户注册表，新闻分类表 新闻表，留言表
+
+     新闻点击统计  (字段)
+
+     留言最多的新闻  
+
+     上一篇  判断最小的newsid
+     下一篇  判断最大的newsid
+
+
+
+     group by  分组  (1年级30，2年级38，3年级40)
+     count(newsid)  计算数目
+
+     select count(newsid) from message group by newsid
+
+
+
+
+
+select newsid,count(newsid) as 数目 from message group by newsid order by count(newsid) desc,newsid desc limit 1
+
+
+评论最多的那条新闻
+select * from news where newsid=(select newsid from message group by newsid order by count(newsid) desc limit 1)
+
+
+ select * from news where newsid  in (select newsid from (select newsid from message group by newsid order by count(newsid) desc limit 1) as t)
+
+
+
+
+  如果在子查询里面有limit 那么 where newsid=判断只能用等号
+
+
+
+ 评论最多的那个用户找出来（名字)
+ select * from register where id=(select userid from message group by userid order by count(userid) desc limit 1)
+
+
+        
+
+
+
+  评论最多的这个用户有那些留言
+  select * from message where userid=(select userid from message group by userid order by count(userid) desc limit 1)
+
+
+
+  域名空间
+
+  域名申请  在万网上面注册一个用户
+
+   cn  中国域名
+   com 国际域名
+   net 
+   gov 政府
+   edu 教育网
+   cc
+
+
+
+ 邮箱服务器平台
+
+ 第一步要登录自己邮箱后台 设置/
+
+
+
+
+
+
+ 配置参数 C() 主要用来保存网站的一些参数
+
+ 在数据库里面要建立一张表 config
+ 在控制器里面的赋值
+ C('title','合肥诺博源软件科技有限公司')；
+
+在模板里面的使用
+<title>{$Think.config.title}{:C('title')}</title>
+
+二维以上
+{$Think.config.a.title.num} 这个不能使用
+{:C('a')['title']['num']} 可以使用
+
+//QQ弹出接口设置
+http://shang.qq.com/v3/widget.html

@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>新闻添加</title>
+</head>
+
+<body>
+      <form method="post" action="{:U('Index/news_check')}">
+            新闻标题:<input type="text" name="title" /><br/><br/>
+            新闻内容:<textarea name="content" cols="50" rows="20"></textarea><br/><br/>
+            新闻分类:<select name="type">
+                                 <option value="1">行业新闻</option>
+                                 <option value="2">国内新闻</option>
+                                 <option value="3">国际新闻</option> 
+                           </select><br/><br/>
+             <input type="submit"  value="添加" />
+      
+      </form>
+
+
+</body>
+</html>

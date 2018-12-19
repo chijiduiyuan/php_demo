@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ajax</title>
+  <meta charset='utf8'/>
+	<script src='../Public/admin/js/jquery.min.js'></script>
+
+
+	<script>
+
+	$(function(){  
+        $("#username").keyup(function(){
+        var val=$(this).val();//获取用户名
+        //ajax请求
+        $.ajax({
+            url:'ajax_check.php', //请求地址
+            type:"post",//请求类型
+            data:{'username':val},//传值
+            dataType:'json',
+            success:function(data){
+              if(data.info==1){
+ $("#notice_username").html('此用户已经被注册');
+               }else{
+ $("#notice_username").html('这个用户可以注册');
+               }
+
+            } 
+
+          });
+
+
+         });
+
+	   	});
+
+	</script>
+</head>
+<body>
+     用户名:<input type="text" name="username" id="username" /><span id="notice_username" style="color:red;"></span>
+</body>
+</html>

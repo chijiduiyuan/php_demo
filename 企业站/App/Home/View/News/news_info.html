@@ -1,0 +1,176 @@
+<html >
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<title>诺博源</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Assets/css/reset.css"/>
+<script type="text/javascript" src="__PUBLIC__/Assets/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Assets/js/js_z.js"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Assets/css/thems.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Assets/css/responsive.css">
+
+<style>
+     .inp{ width:800px; margin:0 auto; margin-bottom:20px;}
+     .liuyan{ width:800px; margin:0 auto; height:auto;}
+	.con{ padding:20px 10px; background:#F0F0F0; margin-bottom:10px; width:780px;  float:left; position:relative;}
+    .con img{ float:left; border-radius:50%; }
+    .con1{ margin-left:20px; color:#069; display:block; float:left; width:700px; font-size:12px; line-height:24px;}
+	.close{ display:none; text-decoration:none; text-align:center; width:30px; height:30px; position:absolute; top:20%; right:20px; }
+	.con:hover .close{ display:block;}
+	.ptitle{ margin-left:20px; width:700px; float:left; font-size:14px; }
+	.con span{ display:inline-block; margin-left:10px; color:#999}
+	.sj{ width:20%; line-height:36px; display:block; height:36px; float:right;}
+     .more1{ width:800px; height:30px; margin:0 auto; background:#ccc; text-align:center; line-height:30px;}
+</style>
+</head>
+
+<body>
+<!--头部-->
+  <include file='Public/header' />
+<!--头部-->
+<div class="banner banner_s"><img src="__PUBLIC__/Assets/upload/banner_a.jpg" alt=""/></div>
+<div class="space_hx">&nbsp;</div>
+<div class="scd clearfix">
+    <div class="scd_l">
+        <div class="name">新闻中心</div>
+        <ul class="s_nav">
+        
+            <volist name="news_type" id="vo">
+        	<li>
+            	<a href="{:U('News/news',array('typeid'=>$vo['typeid']))}">{$vo.name}</a>
+            </li>
+         </volist>
+          
+        </ul>
+    </div>
+    <div class="scd_r">
+        <div class="dq">
+            <span class="name">行业新闻</span>
+            <div class="pst">
+                <span>您的位置：</span>
+                <a href="index.html">首页</a>
+                <span>></span>
+                <a href="news.html">新闻中心</a>
+                <span>></span>
+                <a href="news.html" class="on">行业新闻</a>
+            </div>
+        </div>
+        <div class="scd_m">
+         <div class="news_info">
+           <h2>{$list.title}</h2>
+            <div><span>发布时间：{$list.sj}</span><span>来源：中国政府网</span><span>留言条数：<b id="num">{$num}</b></span><span>访问量：{$list.count}</span></div>
+            <div class="img"></div>
+            <p>{$list['content'] | htmlspecialchars_decode}</p>      
+        </div>
+        
+        <!-- 对新闻留言评论   -->
+         <div class="liuyan">
+                <volist name="pl" id="vv">
+                <div class="con">
+                <img src="__ROOT__/Uploads/{$vv['pic']}" width='40' height="40" />
+                <p class="con1">{$vv.username}<span>{$vv.shijian}</span></p>
+                 <div class="ptitle">{$vv.content}</div>
+                 <if condition="$Think.session.register eq $vv['username']">
+                 <a href="javascript:void(0)" class="close" uid="{$vv.id}">删除</a>
+                 </if>
+                 </div> 
+                 </volist>
+         </div>
+          
+          
+          
+        <input type="hidden" id="newsid" value="{$list['newsid']}" />
+       <textarea id="message" style="width:500px; height:100px; border:#999 1px solid; border-radius:8px;" ></textarea> <input  type="button" value="留言提交" id="tj" style="width:80px; height:36px; line-height:36px; background:#F00; color:#fff; border:0px; border-radius:8px;" />  <br/>
+        
+        
+       {$ss}
+        
+ <script>
+   $(function(){
+	    $("#tj").click(function(){
+	        var user="{$Think.session.register}";
+			var newsid=$('#newsid').val();
+		    if(user==""){
+				alert('请登录');
+				}
+				
+			else{
+				    var val=$("#message").val();
+				   if(val==""){
+					    alert("对不起留言不能为空");
+					   }
+				   else{
+					   
+					   $.ajax({
+						     url:"{:U('News/pl_ajax')}",
+							 type:"POST",
+							 async:true,
+							 dataType:"json",
+							 data:{'val':val,'newsid':newsid},
+							 success: function(data){
+                                   //alert(data.content);
+						var html='<div class="con"><img src="__ROOT__/Uploads/{$Think.session.pic}" width="40" height="40" /><p class="con1">'+user+'<span>'+data.shijian+'</span></p><div class="ptitle">'+data.content+'</div><a href="javascript:void(0)" class="close" uid="'+data.id+'">删除</a></div>'
+						$(".liuyan").prepend(html);   
+						  var n=parseInt($("#num").html());
+						  n++;
+						  $("#num").html(n);  //改留言数量
+
+								 },
+						   
+						   });
+					   
+					   }
+				}
+				
+				
+				
+	   });
+	   
+	   
+	  //删除留言
+	  
+	  $(document).on('click','.close',function(){
+		    var rel=confirm('是否要删除');
+			if(rel){
+			uid=$(this).attr('uid'); //要删除的留言的id
+		    $(this).parents('.con').remove();
+			$.ajax({
+				     url:"{:U('News/pl_del_ajax')}",
+					 type:'POST',
+					 dataType:"json",
+					 async:true,
+					 data:{'id':uid},
+					 success: function(){
+						  var n=parseInt($("#num").html());
+						  n--;
+						  $("#num").html(n);  //改留言数量
+						 alert('删除成功');
+						 
+						 },
+				});
+			
+		    } 
+			
+			
+			
+			
+		  });   
+	   
+	   
+ 
+ });
+ 
+ </script>       
+        
+        </div>
+    </div>
+</div>
+
+
+<div class="space_hx">&nbsp;</div>
+
+<include file="Public/footer" />
+
+</body>
+</html>

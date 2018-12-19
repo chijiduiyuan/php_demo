@@ -1,0 +1,68 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<title>诺博源</title>
+<link rel="stylesheet" type="text/css" href="__CSS__/reset.css"/>
+<script type="text/javascript" src="__JS__/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="__JS__/js_z.js"></script>
+<link rel="stylesheet" type="text/css" href="__CSS__/thems.css">
+<link rel="stylesheet" type="text/css" href="__CSS__/responsive.css">
+</head>
+
+<body>
+<!--头部-->
+<include file="public/header" />
+<!--头部-->
+
+<div class="banner banner_s"><img src="__PUBLIC__/Assets/upload/banner_a.jpg" alt=""/></div>
+<div class="space_hx">&nbsp;</div>
+<div class="scd clearfix">
+    <div class="scd_l">
+        <div class="name">产品中心</div>
+        <ul class="s_nav">
+            <volist name="cp_type" id="vo">
+            <li>
+                <a href="{:U('Cp/product',array('typeid'=>$vo['typeid']))}">{$vo.name}</a>
+            </li>
+            </volist>
+        </ul>
+    </div>
+    <div class="scd_r">
+        <div class="dq">
+            <span class="name">{$name}</span>
+            <div class="pst">
+                <span>您的位置：</span>
+                <a href="{:U('Index/index')}">首页</a>
+                <span>></span>
+                <a href="{:U('Cp/product')}">产品中心</a>
+                <span>></span>
+                <a href="javascript:void(0)" class="on">{$name}</a>
+            </div>
+        </div>
+        <div class="scd_m">
+            <ul class="news">
+              <volist name="list" id="val">
+                <li>
+                    <div class="tu">
+                        <a href="{:U('Cp/product_info')}"><img src="__PUBLIC__/Assets/upload/{$val.cppic}" alt=""/>
+                        <div class="title">{$val.cpname}</div>
+                        </a>
+                    </div>
+                </li>
+               </volist> 
+            </ul>
+            <div class="space_hx">&nbsp;</div>
+            <div class="pages">
+                {$page}
+           </div>
+        </div>
+    </div>
+</div>
+<div class="space_hx">&nbsp;</div>
+<!--尾部-->
+<include file="public/footer" />
+<!--尾部-->
+</body>
+</html>

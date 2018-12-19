@@ -1,0 +1,1 @@
+<?php if (!defined('THINK_PATH')) exit();?>这是Login控制器下的login()方法

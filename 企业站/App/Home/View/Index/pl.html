@@ -1,0 +1,143 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<title>诺博源</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Assets/css/reset.css"/>
+<script type="text/javascript" src="__PUBLIC__/Assets/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Assets/js/js_z.js"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Assets/css/thems.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Assets/css/responsive.css">
+<style>
+     .inp{ width:800px; margin:0 auto; margin-bottom:20px;}
+     .liuyan{ width:800px; margin:0 auto; height:auto;}
+	.con{ padding:20px 10px; background:#F0F0F0; margin-bottom:10px; width:780px;  float:left; }
+    .con img{ float:left; border-radius:50%; }
+    .con1{ margin-left:20px; color:#069; display:block; float:left; width:700px; font-size:12px; line-height:24px;}
+	.ptitle{ margin-left:20px; width:700px; float:left; font-size:14px; }
+	.con span{ display:inline-block; margin-left:10px; color:#999}
+	.sj{ width:20%; line-height:36px; display:block; height:36px; float:right;}
+     .more1{ width:800px; height:30px; margin:0 auto; background:#ccc; text-align:center; line-height:30px;}
+</style>
+<script>
+     $(function(){
+
+		   $("#bt").click(function(){
+			    var val=$("#message").val();
+				var username="{$Think.session.username}";
+				if(username==""){
+					alert("请登录");
+					}
+				else{
+				if(val==""){alert("对不起留言不能空");}
+					
+			    else{
+					  $.ajax({
+						      url:"{:U('Index/pl_check')}",
+							  type:"POST",
+							  dataType:"json",
+							  async:true,
+							  data:{'message':val},
+							  success:function(data){	  
+							    if(data.info){
+								   var html= '<div class="con"><img src="__PUBLIC__/Assets/images/g.jpg" /><p class="con1">'+username+'<span>'+data.shijian+'</span></p><div class="ptitle">'+data.content+'</div></div>';
+                                   $(".liuyan").prepend(html);   
+									   }
+								 else{alert("留言失败");}
+								  },  
+						  });
+					}
+					
+				}
+			   
+			   });
+		 
+		 
+		 });
+</script>
+
+<!-- 计算多长时间以前封装  -->
+<script>
+
+function sj(pTime){       
+    var d_minutes,d_hours,d_days,d;
+    var timeNow =parseInt(new Date().getTime()/1000);
+    //pTime_new =new Date(pTime).getTime()/1000;
+	pTime_new=pTime;
+	
+    d = timeNow - pTime_new;  
+	 
+	d_years=parseInt(d/31104000);
+	d_months=parseInt(d/2592000);
+    d_days = parseInt(d/86400);    
+    d_hours = parseInt(d/3600);       
+    d_minutes = parseInt(d/60);    
+	
+	if(d_years>0){
+		return d_years+"年前";    
+		}
+		
+   else if(d_months>0 && d_months<=12){
+		return d_months+"月前";    
+		}
+		
+    else if(d_days>0 && d_days<=31){       
+        return d_days+"天前";       
+       }
+	
+	else if(d_days<=0 && d_hours>0){       
+        return d_hours+"小时前";       
+       }
+		
+	else if(d_hours<=0 && d_minutes>0){       
+        return d_minutes+"分钟前";       
+       }
+
+	else{
+        return pTime;
+         }
+	
+}
+//alert(sj('2015/2/25 18:00:00'));
+</script>
+
+
+
+
+
+
+</head>
+
+<body>
+<!--头部-->
+<include file="Public/header" />
+<!--头部-->
+
+<div class="banner banner_s"><img src="__PUBLIC__/Assets/upload/banner_a.jpg" alt=""/></div>
+<div class="space_hx">&nbsp;</div>
+<div class="scd clearfix"></div>
+   <div class="inp">
+   <textarea style="width:400px; height:100px;" id="message"></textarea>
+   <input type="button" value="提交" style="width:40px; height:26px; line-height:26px; display:inline-block; background:#F00; border:0px; border-radius:5px; text-align:center; color:#FFF" id="bt" />
+   </div>
+   
+   <div class="liuyan">
+   
+             <volist name="list" id="vv"> 
+                <div class="con">
+                <img src="__PUBLIC__/Assets/images/g.jpg" />
+                <p class="con1">{$vv.username}<span>{$vv['shijian']|date="Y-m-d H:i:s",###}</span></p>
+                 <div class="ptitle">{$vv.content}</div>
+                 </div>
+            </volist> 
+                 
+   </div>
+   <div class="clearfix"></div>
+<div class="more1"><a href="javascript:void()" id="more">更多 ....</a></div>
+
+
+<div class="space_hx">&nbsp;</div>
+<include file="Index/footer" />
+</body>
+</html>

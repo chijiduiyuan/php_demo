@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>注册</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/style.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/shopping-mall-index.css" />
+<script type="text/javascript" src="__PUBLIC__/Home/js/jquery.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/zhonglin.js"></script>
+</head>
+
+<body>
+
+	<!--top 开始-->
+    <include file="Include:top" />
+    
+    <!--logo search 开始--><!--内容开始-->
+    <div class="password-con registered">
+    <form method="post" action="{:U('User/user_check')}" >
+    	<div class="psw">
+        	<p class="psw-p1">用户名</p>
+            <input type="text" placeholder="HR了" />
+            <span class="dui"></span>
+        </div>
+    	<div class="psw">
+        	<p class="psw-p1">输入密码</p>
+            <input type="text" placeholder="请输入密码" />
+            <span class="cuo">密码由6-16的字母、数字、符号组成</span>
+        </div>
+    	<div class="psw">
+        	<p class="psw-p1">确认密码</p>
+            <input type="text" placeholder="请再次确认密码" />
+            <span class="cuo">密码不一致，请重新输入</span>
+        </div>
+    	<div class="psw psw2">
+        	<p class="psw-p1">手机号/邮箱</p>
+            <input type="text" placeholder="请输入手机" name="tel" id="tel"/>
+            <!-- <a href="javascript:void(0)" style="background:#C60; color:#FFF" id="dx"> 获取短信验证码</a> -->
+            <input type="button" value="获取短信验证码" id="dx">
+        </div>
+    	<div class="psw psw3">
+        	<p class="psw-p1">手机验证码</p>
+            <input type="text"  name="code" />
+        </div>
+    	
+        
+        <div class="agreement">
+        	<input type="checkbox" name="hobby"></input>
+            <p>我有阅读并同意<span>《宅客微购网站服务协议》</span></p>
+        </div>
+        <button class="psw-btn">立即注册</button>
+        <p class="sign-in">已有账号？请<a href="#">登录</a></p>
+        </form>
+        
+    </div>
+    
+    <!--底部服务-->
+    
+    <include file="Include:footer" />
+      <script>
+         $(function(){
+			    $("#dx").click(function(){
+					   var tel=$("#tel").val(); 
+					   //alert(tel);
+					   $.ajax({
+						      url:"http://www.mydshang.com/dx/sendSMS.php",
+							  type:"POST",
+							  async:true,
+							  dataType:"json",
+							  data:{'tel':tel},
+						      success:function(data){
+								  //alert(data.info);
+							},
+						   });
+					 });
+			 });
+    
+      </script>
+</body>
+</html>

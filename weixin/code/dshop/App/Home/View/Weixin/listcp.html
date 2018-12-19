@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <title>产品列表</title>
+        <link href="__PUBLIC__/Weixin/css/wapstyle.css"  rel="stylesheet"/>
+        <link href="__PUBLIC__/Weixin/css/style.css" rel="stylesheet">
+        <script src="__PUBLIC__/Weixin/css/jquery.min.js"></script>
+        <script src="__PUBLIC__/Weixin/css/jquery-1.9.1.js"></script><!--导航-->
+        <script src="__PUBLIC__/Weixin/css/jquery.common.js"></script><!--导航-->
+
+        <script type="text/javascript" charset="utf-8">
+            $(function () {
+                $(".name1").addClear();
+            });
+        </script>
+
+        <script src="__PUBLIC__/Weixin/css/framework.launcher.js"></script><!--加载-->
+
+        <script>
+            function chk(obj) {
+                if (obj.keyword.value == '' || obj.keyword.value == '搜索商品关键字') {
+                    alert('搜索商品关键字');
+                    return false;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <!--加载-->
+        <div id="preloader">
+            <div id="status">
+                <p class="center-text">
+                    Loading the content...
+                    <em>Loading depends on your connection speed!</em>
+                </p>
+            </div>
+        </div><!--end-->
+
+        <!--顶部-->
+        <div class="ding">   
+            <div class="topbar bgblack padding3 borderbottom">
+                <div class="navbar-toggle">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </div>
+                <div class="top-soso rounds"><form name="searchform" id="formid"  action="/wap/index.php/search" method="get" onsubmit="return chk(this)" ><input name="keyword" type="text" class="rounds iconso name1"  onFocus="if (value == defaultValue) {
+                   value = '';}" onBlur="if (!value) {
+                               value = defaultValue;}" value="搜索商品关键字" ></form></div>
+                <div class="logo-top-other"><a href='javascript:if(document.getElementById("formid").keyword.value=="搜索商品关键字"){alert("搜索商品关键字");}else{document.getElementById("formid").submit();}'>搜索</a></div> 
+            </div>
+
+        </div>  
+        <!--end-->
+
+        <!--产品列表-->
+        <div class="clear"></div>
+        <article>
+            <div class="shangpin">
+                <ul class="shangpin1">
+
+                    <volist name="list" id="vo">
+        <li ><a href="{:U('Weixin/info',array('id'=>$vo['cpid']))}"><span><img src="/Uploads/{$vo.cppic}"></span><h4>￥{$vo.price}</h4><p>{$vo.cpname}</p></a></li>
+                    </volist>
+                
+
+                </ul> 
+                <nav>
+                    <div class="pager">
+
+                     {$page}
+
+                    </div>
+                </nav>
+            </div>
+        </article>  
+        <!--end-->
+
+
+        <!--底部-->
+        <div class="divcon"></div>
+        <footer class="footer1">
+            <nav class="mainav">
+                <ul class="pc_overflow">
+                    <li class="li11"><a href="javascript:WeixinJSBridge.invoke('closeWindow',{},function(res){});"><p>首页</p></a></li>
+                    <li class="li21"><a href="{:U('Weixin/cplist/')}"><p>产品展示</p></a></li>
+                    <li class="li31"><a href="http://wpa.qq.com/msgrd?v=3&amp;uin=88148253&amp;site=qq&amp;menu=yes"><p>在线沟通</p></a></li>
+                    <li class="li41"><a href="tel:13123456789"><p>一键拨号</p></a></li>
+
+                </ul>
+            </nav>
+        </footer><!--end-->
+
+    </body>
+</html>
